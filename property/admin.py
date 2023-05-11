@@ -5,6 +5,7 @@ from .models import Complaint, Flat
 
 @admin.register(Flat)
 class FlatAdmin(admin.ModelAdmin):
+    raw_id_fields = ("liked_by",)
     search_fields = ['town', 'address', 'owner']
     readonly_fields = ['created_at']
     list_display = ['address', 'price', 'new_building', 'construction_year', 'town']
@@ -16,6 +17,3 @@ class FlatAdmin(admin.ModelAdmin):
 class ComplaintsAdmin(admin.ModelAdmin):
     raw_id_fields = ("user", 'flat')
     list_display = ['user', 'flat', 'description']
-
-
-# admin.site.register(Flat, FlatAdmin, Complaints, ComplaintsAdmin)

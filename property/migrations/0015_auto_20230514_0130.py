@@ -10,7 +10,6 @@ def add_flats(apps, schema_editor):
     if owners.exists():
         for owner in owners.iterator():
             apartments = Flat.objects.filter(owner=owner.name)
-            print(apartments)
             owner.flats.set(apartments)
             owner.save()
 
